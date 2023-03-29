@@ -10,9 +10,12 @@ interface Job {
 
 interface WorkState {
   jobs: Job[];
+  addJob: () => void;
+  removeJob: (index: number) => void;
+  setField: (name: string, value: string, index: number) => void;
 }
 
-const initialJobState = {
+const initialJobState: Job = {
   company: "",
   title: "",
   from: "",
@@ -22,6 +25,28 @@ const initialJobState = {
 
 const useWorkXpStore = create<WorkState>((set) => ({
   jobs: [{ ...initialJobState }],
+
+  addJob: () =>
+    set((state) => ({ jobs: [...state.jobs, { ...initialJobState }] })),
+
+  removeJob: (index: number) => {
+    return set((state) => {
+      return {
+        jobs: [...state.jobs].filter((job, i) => i !== index),
+      };
+    });
+  },
+
+  setField: (name = "", value: string, index: number) => {
+    return set((state) => {
+      return {
+        jobs: [...state.jobs].map((job: Job, i: number) => {
+          if (index === i) return { ...job, [name]: value };
+          return job;
+        }),
+      };
+    });
+  },
 }));
 
 export default useWorkXpStore;

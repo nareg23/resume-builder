@@ -19,12 +19,12 @@ const Accordion = ({ i, expanded, setExpanded, title, children }: Props) => {
   return (
     <>
       <motion.header
-        className="p-5 flex justify-center items-center"
+        className="p-5 flex justify-center items-center cursor-pointer"
         initial={false}
         animate={{ backgroundColor: isOpen ? "#FF0088" : "#0055FF" }}
         onClick={() => setExpanded(isOpen ? false : i)}
       >
-        <h2>Personal info</h2>
+        <h2 className="text-xl font-semibold">{title}</h2>
       </motion.header>
       <AnimatePresence initial={false}>
         {isOpen && (

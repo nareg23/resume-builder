@@ -3,34 +3,80 @@
 import useWorkXpStore from "@/store/useWorkXpStore";
 import React from "react";
 
+type HandleChange = (
+  event: React.ChangeEvent<HTMLInputElement>,
+  index: number
+) => void;
+
 const WorkExperience = () => {
-  const { jobs } = useWorkXpStore((state) => state);
+  const { jobs, addJob, removeJob, setField } = useWorkXpStore(
+    (state) => state
+  );
+
+  const handleChange: HandleChange = (event, index) => {
+    const {
+      currentTarget: { value, name },
+    } = event;
+    console.log("name", name);
+    setField(name, value, index);
+  };
+
   return (
     <div className="px-5">
-      {jobs.map((job) => (
-        <div key={job.company}>
+      {jobs.map((job, i) => (
+        <div className="relative pb-10 space-y-6" key={job.company}>
+          <button
+            onClick={() => {
+              removeJob(i);
+            }}
+            className="absolute right-1 top-1"
+          >
+            x
+          </button>
           <div>
-            <label htmlFor="">from</label>
+            <label htmlFor="from">from</label>
             <input
               className="text-black"
               type="date"
+              name="from"
               value={job.from}
-              onChange={(e) => console.log(e.currentTarget.value)}
+              onChange={(e) => handleChange(e, i)}
             />
 
-            <label htmlFor="">to</label>
-            <input className="text-black" type="date" value={job.to} />
+            <label htmlFor="to">to</label>
+            <input
+              className="text-black"
+              type="date"
+              name="to"
+              value={job.to}
+              onChange={(e) => handleChange(e, i)}
+            />
           </div>
           <div>
-            <label htmlFor="">title</label>
-            <input className="text-black" type="text" value={job.title} />
+            <label htmlFor="title">title</label>
+            <input
+              className="text-black"
+              type="text"
+              name="title"
+              value={job.title}
+              onChange={(e) => handleChange(e, i)}
+            />
           </div>
           <div>
-            <label htmlFor="">Company</label>
-            <input className="text-black" type="text" value={job.company} />
+            <label htmlFor="company">Company</label>
+            <input
+              className="text-black"
+              type="text"
+              name="company"
+              value={job.company}
+              onChange={(e) => handleChange(e, i)}
+            />
           </div>
         </div>
       ))}
+      <div>
+        <button onClick={addJob}>add</button>
+      </div>
     </div>
   );
 };

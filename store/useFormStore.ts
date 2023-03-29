@@ -16,6 +16,7 @@ const useFormStore = create<FormStore>((set, get) => ({
   },
   setName: (name: string) =>
     set((state) => ({ form: { ...state.form, name } })),
+
   setLastName: (lastName: string) =>
     set((state) => ({ form: { ...state.form, lastName } })),
 }));
