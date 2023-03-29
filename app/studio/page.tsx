@@ -6,7 +6,7 @@ import PdfTemplate from "@/components/PdfTemplate";
 const page = () => {
   return (
     <div className="h-screen flex bg-gray-400">
-      <div className="h-full w-1/4">
+      <div className="h-full w-1/4 overflow-y-scroll bg-cyan-950">
         <ControlPanel />
       </div>
       <div>

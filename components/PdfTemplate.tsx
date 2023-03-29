@@ -8,7 +8,12 @@ const PdfTemplate = () => {
   return (
     <div>
       <h1>{name}</h1>
-      <h1>{lastName}</h1>
+      <h1
+        className="text-4xl text-black
+      "
+      >
+        {lastName}
+      </h1>
     </div>
   );
 };

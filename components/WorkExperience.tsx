@@ -4,7 +4,7 @@ import useWorkXpStore from "@/store/useWorkXpStore";
 import React from "react";
 
 type HandleChange = (
-  event: React.ChangeEvent<HTMLInputElement>,
+  event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   index: number
 ) => void;
 
@@ -24,7 +24,8 @@ const WorkExperience = () => {
   return (
     <div className="px-5">
       {jobs.map((job, i) => (
-        <div className="relative pb-10 space-y-6" key={job.company}>
+        <div className="relative pb-10 space-y-6" key={job.id}>
+          <h1>Job # {i + 1}</h1>
           <button
             onClick={() => {
               removeJob(i);
@@ -63,12 +64,20 @@ const WorkExperience = () => {
             />
           </div>
           <div>
-            <label htmlFor="company">Company</label>
+            <label htmlFor="company">company</label>
             <input
               className="text-black"
-              type="text"
               name="company"
               value={job.company}
+              onChange={(e) => handleChange(e, i)}
+            />
+          </div>
+          <div>
+            <label htmlFor="title">description</label>
+            <textarea
+              className="text-black"
+              name="description"
+              value={job.description}
               onChange={(e) => handleChange(e, i)}
             />
           </div>

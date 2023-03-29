@@ -7,7 +7,7 @@ import WorkExperience from "./WorkExperience";
 const ControlPanel = () => {
   const [expanded, setExpanded] = useState<false | number>(0);
   return (
-    <div className="bg-gray-800 h-full">
+    <div className="h-full">
       <h1 className="text-white">
         <Accordion
           i={0}
