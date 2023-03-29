@@ -24,11 +24,12 @@ const Accordion = ({ i, expanded, setExpanded, title, children }: Props) => {
         animate={{ backgroundColor: isOpen ? "#FF0088" : "#0055FF" }}
         onClick={() => setExpanded(isOpen ? false : i)}
       >
-        <h2 className="text-xl font-semibold">{title}</h2>
+        <h2 className="text-xl font-semibold text-white">{title}</h2>
       </motion.header>
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.section
+            className="text-white"
             key="content"
             initial="collapsed"
             animate="open"

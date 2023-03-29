@@ -21,9 +21,11 @@ const PdfTemplate = () => {
           <div key={job.id}>
             <h2 className="text-orange-200">{job.company}</h2>
             <h3>{job.title}</h3>
-            <p>
-              from {job.from} to {job.to}
-            </p>
+            {job.from && (
+              <p>
+                from {job.from} to {!job.to ? "present" : job.to}
+              </p>
+            )}
             <p>{job.description}</p>
           </div>
         ))}

@@ -54,5 +54,3 @@ const useWorkXpStore = create<WorkState>((set) => ({
 }));
 
 export default useWorkXpStore;
-
-// jobs [{name:'nareg,lastName:'tokat},{name:'kevo,lastName:'basmajian}]
