@@ -37,7 +37,7 @@ const Accordion = ({ i, expanded, setExpanded, title, children }: Props) => {
               open: { opacity: 1, height: "auto" },
               collapsed: { opacity: 0, height: 0 },
             }}
-            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+            transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             {/* accordion contents */}
             {children}
