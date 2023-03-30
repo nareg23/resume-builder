@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import Accordion from "./Accordion";
-import PersonalInfoForm from "./PersonalInfoForm";
-import WorkExperience from "./WorkExperience";
-import Skills from "./Skills";
+import Accordion from "./AccordionElements/Accordion";
+import PersonalInfoForm from "./AccordionElements/PersonalInfoForm";
+import WorkExperience from "./AccordionElements/WorkExperience";
+import Skills from "./AccordionElements/Skills";
+import Education from "./AccordionElements/Education";
 
 const ControlPanel = () => {
   const [expanded, setExpanded] = useState<false | number>(0);
@@ -32,6 +33,14 @@ const ControlPanel = () => {
         title="Skills"
       >
         <Skills />
+      </Accordion>
+      <Accordion
+        i={3}
+        expanded={expanded}
+        setExpanded={setExpanded}
+        title="Education/Training"
+      >
+        <Education />
       </Accordion>
     </div>
   );

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import PersonalInfoForm from "./PersonalInfoForm";
 
 interface Props {
   i: number;
