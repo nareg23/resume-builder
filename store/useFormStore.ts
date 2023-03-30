@@ -1,24 +1,27 @@
 import { create } from "zustand";
 
+interface Form {
+  name: string;
+  lastName: string;
+  email: string;
+  summary: string;
+}
 interface FormStore {
-  form: {
-    name: string;
-    lastName: string;
-  };
-  setName: (name: string) => void;
-  setLastName: (lastName: string) => void;
+  form: Form;
+  setField: (name: string, value: string) => void;
 }
 
-const useFormStore = create<FormStore>((set, get) => ({
-  form: {
-    name: "",
-    lastName: "",
-  },
-  setName: (name: string) =>
-    set((state) => ({ form: { ...state.form, name } })),
+const initialForm: Form = {
+  email: "",
+  lastName: "",
+  name: "",
+  summary: "",
+};
 
-  setLastName: (lastName: string) =>
-    set((state) => ({ form: { ...state.form, lastName } })),
+const useFormStore = create<FormStore>((set) => ({
+  form: { ...initialForm },
+  setField: (name: string, value: string) =>
+    set((state) => ({ form: { ...state.form, [name]: value } })),
 }));
 
 export default useFormStore;

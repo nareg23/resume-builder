@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const State = () => {
   const {
     form: { name },
-    setName,
+    setField: setName,
   } = useFormStore((state) => state);
   return (
     <div>
