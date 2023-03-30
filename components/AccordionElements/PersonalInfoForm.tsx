@@ -53,6 +53,24 @@ const PersonalInfoForm = () => {
           onChange={handleChange}
         />
       </div>
+      <div>
+        <p>city</p>
+        <input
+          value={form.city}
+          className="text-black"
+          name="city"
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <p>phoneNum</p>
+        <input
+          value={form.phoneNum}
+          className="text-black"
+          name="phoneNum"
+          onChange={handleChange}
+        />
+      </div>
     </div>
   );
 };

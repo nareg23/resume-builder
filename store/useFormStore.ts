@@ -5,6 +5,8 @@ interface Form {
   lastName: string;
   email: string;
   summary: string;
+  city: string;
+  phoneNum: string;
 }
 interface FormStore {
   form: Form;
@@ -16,6 +18,8 @@ const initialForm: Form = {
   lastName: "",
   name: "",
   summary: "",
+  city: "",
+  phoneNum: "",
 };
 
 const useFormStore = create<FormStore>((set) => ({
