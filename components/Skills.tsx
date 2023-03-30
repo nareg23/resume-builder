@@ -15,7 +15,10 @@ const Skills = () => {
       <div>
         <ul>
           {skills?.map((skill) => (
-            <li key={skill}>{skill}</li>
+            <div key={skill}>
+              <li>{skill}</li>
+              <button onClick={() => removeSkill(skill)}>x</button>
+            </div>
           ))}
         </ul>
       </div>
