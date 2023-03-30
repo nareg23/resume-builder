@@ -1,22 +1,47 @@
 import { create } from "zustand";
 
+interface Skill {
+  id: number;
+  name: string;
+  level: "1" | "2" | "3" | "4" | "5";
+}
 interface SkillsState {
-  skills: string[];
-  addSkill: (skill: string) => void;
-  removeSkill: (skill: string) => void;
+  skills: Skill[];
+  addSkill: () => void;
+  removeSkill: (id: number) => void;
+  setField: (name: string, value: string, id: number) => void;
 }
 
+const initialSkill: Skill = {
+  id: 0,
+  name: "",
+  level: "5",
+};
+
 const useSkillsStore = create<SkillsState>((set) => ({
-  skills: [],
-  addSkill: (skill: string) =>
+  skills: [{ ...initialSkill }],
+  addSkill: () =>
     set((state) => {
       return {
-        skills: [...state.skills, skill],
+        skills: [
+          ...state.skills,
+          { ...initialSkill, id: [...state.skills].length },
+        ],
       };
     }),
-  removeSkill: (skill: string) =>
+  removeSkill: (id: number) =>
     set((state) => {
-      return { skills: [...state.skills].filter((el) => el !== skill) };
+      return { skills: [...state.skills].filter((skill) => skill.id !== id) };
+    }),
+
+  setField: (name, value, id) =>
+    set((state) => {
+      return {
+        skills: [...state.skills].map((skill: Skill) => {
+          if (skill.id === id) return { ...skill, [name]: value };
+          return skill;
+        }),
+      };
     }),
 }));
 

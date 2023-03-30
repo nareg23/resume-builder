@@ -2,35 +2,56 @@ import useSkillsStore from "@/store/useSkillsStore";
 import React, { useState } from "react";
 
 const Skills = () => {
-  const [newSkill, setNewSkill] = useState("");
-  const { addSkill, removeSkill, skills } = useSkillsStore((state) => state);
+  const { addSkill, removeSkill, skills, setField } = useSkillsStore(
+    (state) => state
+  );
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    addSkill(newSkill);
-    setNewSkill("");
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    id: number
+  ) => {
+    const {
+      currentTarget: { value, name },
+    } = e;
+
+    setField(name, value, id);
   };
+
   return (
-    <div className="">
+    <div className="p-5">
       <div>
-        <ul>
-          {skills?.map((skill) => (
-            <div key={skill}>
-              <li>{skill}</li>
-              <button onClick={() => removeSkill(skill)}>x</button>
+        {skills?.map((skill) => (
+          <div className="border space-y-5" key={skill.id}>
+            <div>
+              <p>{skill.name}</p>
+              <p>{skill.level}</p>
+              <button onClick={() => removeSkill(skill.id)}>x</button>
             </div>
-          ))}
-        </ul>
+            <input
+              className="text-black"
+              type="text"
+              name="name"
+              value={skill.name}
+              onChange={(e) => handleChange(e, skill.id)}
+            />
+            <select
+              onChange={(e) => handleChange(e, skill.id)}
+              className="text-black"
+              name="level"
+            >
+              <option selected value="5">
+                5
+              </option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+        ))}
+
+        <button onClick={() => addSkill()}>add</button>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="text-black"
-          type="text"
-          value={newSkill}
-          onChange={(e) => setNewSkill(e.currentTarget.value)}
-        />
-        <button>add</button>
-      </form>
     </div>
   );
 };
