@@ -8,7 +8,7 @@ const PdfTemplate = () => {
   const { name, lastName } = useFormStore((state) => state.form);
   const jobs = useWorkXpStore((state) => state.jobs);
   return (
-    <div>
+    <div className="p-5">
       <h1>{name}</h1>
       <h1
         className="text-4xl text-black
@@ -26,7 +26,10 @@ const PdfTemplate = () => {
                 from {job.from} to {!job.to ? "present" : job.to}
               </p>
             )}
-            <p>{job.description}</p>
+            <div
+              className="list-decimal text-blue-200"
+              dangerouslySetInnerHTML={{ __html: job.description }}
+            ></div>
           </div>
         ))}
       </div>

@@ -2,6 +2,7 @@
 
 import useWorkXpStore from "@/store/useWorkXpStore";
 import React from "react";
+import Editor from "../Editor";
 
 type HandleChange = (
   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -17,7 +18,6 @@ const WorkExperience = () => {
     const {
       currentTarget: { value, name },
     } = event;
-    console.log("name", name);
     setField(name, value, index);
   };
 
@@ -72,14 +72,9 @@ const WorkExperience = () => {
               onChange={(e) => handleChange(e, i)}
             />
           </div>
-          <div>
+          <div className="text-2xl text-orange-500">
             <label htmlFor="title">description</label>
-            <textarea
-              className="text-black"
-              name="description"
-              value={job.description}
-              onChange={(e) => handleChange(e, i)}
-            />
+            <Editor jobId={job.id} />
           </div>
         </div>
       ))}
