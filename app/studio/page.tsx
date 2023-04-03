@@ -3,21 +3,22 @@ import React, { useRef } from "react";
 import ControlPanel from "@/components/ControlPanel";
 import PdfTemplate from "@/components/PdfTemplate";
 import Pdf from "react-to-pdf";
+import StudioHeader from "@/components/StudioHeader";
 
 const Page = () => {
   const targetRef = useRef(null);
   return (
-    <div className="h-screen flex bg-gray-400">
-      <div className="h-full w-1/4 overflow-y-scroll bg-cyan-950">
-        <ControlPanel />
-      </div>
-      <div ref={targetRef}>
-        <PdfTemplate />
-      </div>
-      <div className="absolute right-1 bottom-0">
-        <Pdf targetRef={targetRef} filename="resume.pdf">
-          {({ toPdf }: any) => <button onClick={toPdf}>Download</button>}
-        </Pdf>
+    <div className="h-screen flex      flex-col bg-white">
+      <StudioHeader targetRef={targetRef} />
+      <div className="flex flex-1">
+        <div className="w-[500px] ">
+          <ControlPanel />
+        </div>
+        <div className="bg-orange-200 flex-1">
+          <div ref={targetRef}>
+            <PdfTemplate />
+          </div>
+        </div>
       </div>
     </div>
   );
