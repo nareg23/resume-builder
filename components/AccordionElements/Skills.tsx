@@ -1,5 +1,5 @@
 import useSkillsStore from "@/store/useSkillsStore";
-import React, { useState } from "react";
+import React from "react";
 
 const Skills = () => {
   const { addSkill, removeSkill, skills, setField } = useSkillsStore(

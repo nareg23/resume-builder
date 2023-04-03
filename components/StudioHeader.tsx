@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 import Pdf from "react-to-pdf";
+import TemplateAccordion from "./AccordionElements/TemplateAccordion";
 type Props = {
   targetRef: React.MutableRefObject<null>;
 };
@@ -18,12 +19,18 @@ const DownloadBtn = ({ toPdf }: any) => (
 );
 
 const StudioHeader = ({ targetRef }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
       <div className="flex px-10 py-4 items-center justify-between">
-        <Link href={"/"}>
-          <AiFillHome className="h-8 w-8 text-gray-700" />
-        </Link>
+        <div className="flex space-x-3 items-center">
+          <Link href={"/"}>
+            <AiFillHome className="h-8 w-8 text-gray-700" />
+          </Link>
+        </div>
+        <div className="w-[30rem]">
+          <TemplateAccordion isOpen={isOpen} setIsOpen={setIsOpen} />
+        </div>
         <Pdf targetRef={targetRef} filename="resume.pdf">
           {({ toPdf }: any) => <DownloadBtn toPdf={toPdf} />}
         </Pdf>

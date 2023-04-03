@@ -5,22 +5,20 @@ import PersonalInfoForm from "./AccordionElements/PersonalInfoForm";
 import WorkExperience from "./AccordionElements/WorkExperience";
 import Skills from "./AccordionElements/Skills";
 import Education from "./AccordionElements/Education";
-import CustomSelect from "./CustomSelect";
-import { motion, AnimatePresence } from "framer-motion";
-import TemplateAccordion from "./AccordionElements/TemplateAccordion";
+import { AnimatePresence } from "framer-motion";
+import { BsPersonFill } from "react-icons/bs";
+import { MdOutlineWork, MdSchool, MdAccountTree } from "react-icons/md";
 
 const ControlPanel = () => {
   const [expanded, setExpanded] = useState<false | number>(0);
+
   return (
     <>
       <AnimatePresence initial={false}>
-        <div className="h-full flex flex-col items-center px-10">
-          <div className="relative w-full">
-            {/* <CustomSelect /> */}
-            <TemplateAccordion />
-          </div>
-          {/*     <div className="w-full">
+        <div className="h-full relative flex flex-col justify-between items-center px-10 ">
+          <div className="w-full scrollbar-thin scrollbar-none overflow-y-auto space-y-2">
             <Accordion
+              Icon={BsPersonFill}
               i={0}
               expanded={expanded}
               setExpanded={setExpanded}
@@ -29,6 +27,7 @@ const ControlPanel = () => {
               <PersonalInfoForm />
             </Accordion>
             <Accordion
+              Icon={MdOutlineWork}
               i={1}
               expanded={expanded}
               setExpanded={setExpanded}
@@ -37,6 +36,7 @@ const ControlPanel = () => {
               <WorkExperience />
             </Accordion>
             <Accordion
+              Icon={MdAccountTree}
               i={2}
               expanded={expanded}
               setExpanded={setExpanded}
@@ -45,6 +45,7 @@ const ControlPanel = () => {
               <Skills />
             </Accordion>
             <Accordion
+              Icon={MdSchool}
               i={3}
               expanded={expanded}
               setExpanded={setExpanded}
@@ -52,10 +53,10 @@ const ControlPanel = () => {
             >
               <Education />
             </Accordion>
-          </div> */}
-          {/*   <div>
+          </div>
+          <div>
             <button>Logout</button>
-          </div> */}
+          </div>
         </div>
       </AnimatePresence>
     </>
