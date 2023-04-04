@@ -1,5 +1,6 @@
 import useFormStore from "@/store/useFormStore";
 import React from "react";
+import PersonalEditor from "../PersonalEditor";
 
 const PersonalInfoForm = () => {
   const { setField, form } = useFormStore((state) => state);
@@ -13,63 +14,71 @@ const PersonalInfoForm = () => {
     setField(name, value);
   };
   return (
-    <div>
-      <div>
-        <p>Name</p>
-        <input
-          value={form.name}
-          className="text-black"
-          type="text"
-          name="name"
-          onChange={handleChange}
-        />
+    <div className="text-gray-700/70 w-full flex flex-col items-center space-y-5 py-2">
+      <div className="flex w-full items-center space-x-2">
+        <div className="overflow-hidden flex-1 space-y-1 ">
+          <p className="uppercase font-semibold text-xs">Name</p>
+          <input
+            value={form.name}
+            className="text-gray-600 flex-1 w-full bg-gray-100 outline-none 
+             border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+            type="text"
+            name="name"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="flex-1 space-y-1">
+          <p className="uppercase font-semibold text-xs">lastName</p>
+          <input
+            value={form.lastName}
+            className="text-gray-600 w-full bg-gray-100 outline-none 
+            border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+            type="text"
+            name="lastName"
+            onChange={handleChange}
+          />
+        </div>
       </div>
-      <div>
-        <p>lastName</p>
-        <input
-          value={form.lastName}
-          className="text-black"
-          type="text"
-          name="lastName"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <p>email</p>
+
+      <div className="w-full space-y-1 ">
+        <p className="uppercase font-semibold text-xs">email</p>
         <input
           value={form.email}
-          className="text-black"
+          className="text-gray-600 flex-1 w-full bg-gray-100 outline-none 
+          border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
           type="text"
           name="email"
           onChange={handleChange}
         />
       </div>
-      <div>
-        <p>summary</p>
-        <textarea
-          value={form.summary}
-          className="text-black"
-          name="summary"
-          onChange={handleChange}
-        />
+
+      <div className="flex flex-col justify-start w-full space-y-1">
+        <p className="uppercase font-semibold text-xs">summary</p>
+        <PersonalEditor />
       </div>
-      <div>
-        <p>city</p>
-        <input
-          value={form.city}
-          className="text-black"
-          name="city"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <p>phoneNum</p>
-        <input
-          value={form.phoneNum}
-          className="text-black"
-          name="phoneNum"
-          onChange={handleChange}
-        />
+
+      <div className="flex items-center w-full space-x-2">
+        <div className="space-y-1">
+          <p className="uppercase font-semibold text-xs">city</p>
+          <input
+            value={form.city}
+            className="text-gray-600 flex-1 bg-gray-100 outline-none 
+            border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+            name="city"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="space-y-1 w-full flex-1">
+          <p className="uppercase font-semibold text-xs">phone</p>
+          <input
+            value={form.phoneNum}
+            className="text-gray-600 flex-1 w-full bg-gray-100 outline-none 
+            border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+            name="phoneNum"
+            onChange={handleChange}
+          />
+        </div>
       </div>
     </div>
   );

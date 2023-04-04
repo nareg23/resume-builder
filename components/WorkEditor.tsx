@@ -1,7 +1,7 @@
 "use client";
 
+import React from "react";
 import useWorkXpStore from "@/store/useWorkXpStore";
-import React, { useState } from "react";
 import ReactQuill from "react-quill";
 
 //Quill Headbard controls
@@ -24,7 +24,7 @@ const Editor = ({ jobId }: Props) => {
 
   return (
     <ReactQuill
-      className="bg-white z-10 p-2 pb-10 text-4xl text-blue-900 rounded-lg overflow-hidden"
+      className=" p-2 pb-10 text-4xl text-blue-900 rounded-lg"
       theme="bubble"
       value={job?.description}
       onChange={(value) => setField("description", value, jobId)}

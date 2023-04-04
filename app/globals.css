@@ -2,4 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("./quill.css");
+/* Quill CSS */
+
+.ql-toolbar.ql-snow {
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ql-container.ql-snow {
+  border: none;
+}

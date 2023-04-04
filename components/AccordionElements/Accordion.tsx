@@ -30,13 +30,19 @@ const Accordion = ({
       <motion.header
         className="p-5 flex justify-between items-center cursor-pointer
          bg-gray-100 text-gray-700 rounded-md border border-slate-100
-          hover:bg-gray-300 transition-colors duration-150"
+          hover:bg-gray-300 transition-colors duration-150 select-none"
         initial={false}
-        animate={{ backgroundColor: isOpen ? "rgb(209 213 219)" : "" }}
+        animate={{
+          backgroundColor: isOpen ? "#4338ca" : "rgb(243 244 246)",
+          color: isOpen ? "#fff" : "rgb(55 65 81)",
+        }}
+        transition={{ duration: 0.1, ease: "easeInOut" }}
         onClick={() => setExpanded(isOpen ? false : i)}
       >
         <div className="flex space-x-2 items-center">
-          <Icon className="h-5 w-5 text-gray-700" />
+          <Icon
+            className={`h-5 w-5 ${isOpen ? "text-white" : "text-gray-700"}`}
+          />
           <h2 className="text-xl font-medium">{title}</h2>
         </div>
       </motion.header>

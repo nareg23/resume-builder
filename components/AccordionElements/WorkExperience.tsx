@@ -2,7 +2,7 @@
 
 import useWorkXpStore from "@/store/useWorkXpStore";
 import React from "react";
-import Editor from "../Editor";
+import Editor from "../WorkEditor";
 
 type HandleChange = (
   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
