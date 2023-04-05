@@ -1,5 +1,7 @@
 import useSkillsStore from "@/store/useSkillsStore";
 import React from "react";
+import { IoMdCloseCircle } from "react-icons/io";
+import { RiAddLine } from "react-icons/ri";
 
 const Skills = () => {
   const { addSkill, removeSkill, skills, setField } = useSkillsStore(
@@ -18,39 +20,59 @@ const Skills = () => {
   };
 
   return (
-    <div className="p-5">
-      <div>
+    <div className="py-2">
+      <div className="w-full space-y-3">
         {skills?.map((skill) => (
-          <div className="border space-y-5" key={skill.id}>
-            <div>
-              <p>{skill.name}</p>
-              <p>{skill.level}</p>
-              <button onClick={() => removeSkill(skill.id)}>x</button>
+          <div
+            className="flex text-gray-700/70 space-x-2 justify-between items-center"
+            key={skill.id}
+          >
+            <div className="flex items-center space-x-2">
+              <p className="uppercase font-semibold text-xs">skill</p>
+              <input
+                className="text-gray-600 flex-1 w-full bg-gray-100 outline-none
+                 border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+                type="text"
+                name="name"
+                value={skill.name}
+                onChange={(e) => handleChange(e, skill.id)}
+              />
             </div>
-            <input
-              className="text-black"
-              type="text"
-              name="name"
-              value={skill.name}
-              onChange={(e) => handleChange(e, skill.id)}
-            />
-            <select
-              onChange={(e) => handleChange(e, skill.id)}
-              className="text-black"
-              name="level"
+
+            <div className="flex items-center justify-around flex-1">
+              <p className="uppercase font-semibold text-xs">Level</p>
+              <select
+                onChange={(e) => handleChange(e, skill.id)}
+                className="w-2/4 outline-none"
+                name="level"
+              >
+                <option selected value="5">
+                  5
+                </option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+              </select>
+            </div>
+            <button
+              className=" text-red-300 hover:text-red-600"
+              onClick={() => removeSkill(skill.id)}
             >
-              <option selected value="5">
-                5
-              </option>
-              <option value="4">4</option>
-              <option value="3">3</option>
-              <option value="2">2</option>
-              <option value="1">1</option>
-            </select>
+              <IoMdCloseCircle className="h-6 w-6 text-red-300 hover:text-red-600" />
+            </button>
           </div>
         ))}
 
-        <button onClick={() => addSkill()}>add</button>
+        <div className="flex justify-center items-center w-full py-4">
+          <button
+            className="flex items-center gap-1 rounded-md 
+            text-gray-300 font-medium hover:text-gray-500"
+            onClick={addSkill}
+          >
+            <RiAddLine className="h-5 w-5" /> add skill
+          </button>
+        </div>
       </div>
     </div>
   );

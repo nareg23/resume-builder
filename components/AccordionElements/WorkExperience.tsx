@@ -3,6 +3,8 @@
 import useWorkXpStore from "@/store/useWorkXpStore";
 import React from "react";
 import Editor from "../WorkEditor";
+import { IoMdCloseCircle } from "react-icons/io";
+import { RiAddLine } from "react-icons/ri";
 
 type HandleChange = (
   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -22,64 +24,103 @@ const WorkExperience = () => {
   };
 
   return (
-    <div className="px-5">
+    <div className="text-gray-700/70 flex w-full flex-col items-end">
       {jobs.map((job, i) => (
         <div className="relative pb-10 space-y-6" key={job.id}>
-          <h1>Job # {i + 1}</h1>
-          <button
-            onClick={() => {
-              removeJob(i);
-            }}
-            className="absolute right-1 top-1"
+          <div
+            className="flex justify-between bg-indigo-400/20 px-2 py-2 rounded-md
+          "
           >
-            x
-          </button>
-          <div>
-            <label htmlFor="from">from</label>
-            <input
-              className="text-black"
-              type="date"
-              name="from"
-              value={job.from}
-              onChange={(e) => handleChange(e, i)}
-            />
+            <p className="font-bold text-gray-500"> # {i + 1}</p>
+            <button
+              onClick={() => {
+                removeJob(i);
+              }}
+            >
+              <IoMdCloseCircle className="h-6 w-6 text-red-300 hover:text-red-600" />
+            </button>
+          </div>
 
-            <label htmlFor="to">to</label>
-            <input
-              className="text-black"
-              type="date"
-              name="to"
-              value={job.to}
-              onChange={(e) => handleChange(e, i)}
-            />
+          <div className="flex  items-center justify-between space-x-2">
+            <div className="flex flex-col w-full flex-1 space-y-2">
+              <label className="uppercase font-semibold text-xs" htmlFor="from">
+                from
+              </label>
+              <input
+                className=" w-full bg-gray-100 outline-none  border
+                  border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
+                type="date"
+                name="from"
+                value={job.from}
+                onChange={(e) => handleChange(e, i)}
+              />
+            </div>
+
+            <div className="w-full flex flex-col  flex-1 space-y-2">
+              <label className="uppercase font-semibold text-xs" htmlFor="to">
+                to
+              </label>
+              <input
+                className="w-full bg-gray-100 outline-none  border
+                        border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
+                type="date"
+                name="to"
+                value={job.to}
+                onChange={(e) => handleChange(e, i)}
+              />
+            </div>
           </div>
-          <div>
-            <label htmlFor="title">title</label>
-            <input
-              className="text-black"
-              type="text"
-              name="title"
-              value={job.title}
-              onChange={(e) => handleChange(e, i)}
-            />
+
+          <div className="flex space-x-2">
+            <div className="flex-1 space-y-2">
+              <label
+                className="uppercase font-semibold text-xs"
+                htmlFor="title"
+              >
+                title
+              </label>
+              <input
+                className="w-full bg-gray-100 outline-none  border
+                 border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
+                type="text"
+                name="title"
+                value={job.title}
+                onChange={(e) => handleChange(e, i)}
+              />
+            </div>
+            <div className="flex-1 space-y-2">
+              <label
+                className="uppercase font-semibold text-xs"
+                htmlFor="company"
+              >
+                company
+              </label>
+              <input
+                className="w-full bg-gray-100 outline-none border
+                border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
+                name="company"
+                value={job.company}
+                onChange={(e) => handleChange(e, i)}
+              />
+            </div>
           </div>
-          <div>
-            <label htmlFor="company">company</label>
-            <input
-              className="text-black"
-              name="company"
-              value={job.company}
-              onChange={(e) => handleChange(e, i)}
-            />
-          </div>
-          <div className="text-2xl text-orange-500">
-            <label htmlFor="title">description</label>
+
+          <div className="text-2xl space-y-2">
+            <label className="uppercase font-semibold text-xs" htmlFor="title">
+              description
+            </label>
             <Editor jobId={job.id} />
           </div>
         </div>
       ))}
-      <div>
-        <button onClick={addJob}>add</button>
+      <div className="flex justify-center items-center w-full py-4">
+        <button
+          className=" flex items-center gap-1 rounded-md
+           text-gray-300 font-medium hover:text-gray-500"
+          onClick={addJob}
+        >
+          <RiAddLine className="h-5 w-5" /> add job
+        </button>
       </div>
     </div>
   );
