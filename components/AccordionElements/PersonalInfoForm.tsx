@@ -20,8 +20,8 @@ const PersonalInfoForm = () => {
           <p className="uppercase font-semibold text-xs">Name</p>
           <input
             value={form.name}
-            className="text-gray-600 flex-1 w-full bg-gray-100 outline-none 
-             border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+            className="text-gray-600 flex-1 w-full bg-gray-100 outline-none border 
+             border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
             type="text"
             name="name"
             onChange={handleChange}
@@ -32,8 +32,8 @@ const PersonalInfoForm = () => {
           <p className="uppercase font-semibold text-xs">lastName</p>
           <input
             value={form.lastName}
-            className="text-gray-600 w-full bg-gray-100 outline-none 
-            border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+            className="text-gray-600 flex-1 w-full bg-gray-100 outline-none border 
+            border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
             type="text"
             name="lastName"
             onChange={handleChange}
@@ -45,8 +45,8 @@ const PersonalInfoForm = () => {
         <p className="uppercase font-semibold text-xs">email</p>
         <input
           value={form.email}
-          className="text-gray-600 flex-1 w-full bg-gray-100 outline-none 
-          border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+          className="text-gray-600 flex-1 w-full bg-gray-100 outline-none border
+          border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
           type="text"
           name="email"
           onChange={handleChange}
@@ -63,8 +63,8 @@ const PersonalInfoForm = () => {
           <p className="uppercase font-semibold text-xs">city</p>
           <input
             value={form.city}
-            className="text-gray-600 flex-1 bg-gray-100 outline-none 
-            border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+            className="text-gray-600 flex-1 w-full bg-gray-100 outline-none border
+            border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
             name="city"
             onChange={handleChange}
           />
@@ -73,8 +73,8 @@ const PersonalInfoForm = () => {
           <p className="uppercase font-semibold text-xs">phone</p>
           <input
             value={form.phoneNum}
-            className="text-gray-600 flex-1 w-full bg-gray-100 outline-none 
-            border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+            className="text-gray-600 flex-1 w-full bg-gray-100 outline-none border
+            border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
             name="phoneNum"
             onChange={handleChange}
           />

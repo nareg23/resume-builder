@@ -7,7 +7,12 @@ import Skills from "./AccordionElements/Skills";
 import Education from "./AccordionElements/Education";
 import { AnimatePresence } from "framer-motion";
 import { BsPersonFill } from "react-icons/bs";
-import { MdOutlineWork, MdSchool, MdAccountTree } from "react-icons/md";
+import {
+  MdOutlineWork,
+  MdSchool,
+  MdAccountTree,
+  MdOutlineLogout,
+} from "react-icons/md";
 
 const ControlPanel = () => {
   const [expanded, setExpanded] = useState<false | number>(0);
@@ -54,8 +59,10 @@ const ControlPanel = () => {
               <Education />
             </Accordion>
           </div>
-          <div>
-            <button>Logout</button>
+          <div className="w-full py-6  text-red-500">
+            <button className="flex items-center gap-1 hover:text-red-700 transition-colors duration-150">
+              <MdOutlineLogout className="h-5 w-5 " /> Logout
+            </button>
           </div>
         </div>
       </AnimatePresence>

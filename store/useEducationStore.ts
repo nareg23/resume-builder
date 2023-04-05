@@ -30,7 +30,7 @@ const useEducationStore = create<EducationState>((set) => ({
     set((state) => ({
       schools: [
         ...state.schools,
-        { ...initialEducationState, id: state.schools.length },
+        { ...initialEducationState, id: state.schools.length + 1 },
       ],
     })),
 
@@ -42,12 +42,12 @@ const useEducationStore = create<EducationState>((set) => ({
     });
   },
 
-  setField: (name = "", value: string, index: number) => {
+  setField: (name, value: string, id: number) => {
     return set((state) => {
       return {
-        schools: [...state.schools].map((job: Education, i: number) => {
-          if (index === i) return { ...job, [name]: value };
-          return job;
+        schools: [...state.schools].map((school: Education, i: number) => {
+          if (id === school.id) return { ...school, [name]: value };
+          return school;
         }),
       };
     });
