@@ -1,13 +1,5 @@
 import { create } from "zustand";
 
-interface Education {
-  id: number;
-  school: string;
-  from: string;
-  to: string;
-  description: string;
-}
-
 interface EducationState {
   schools: Education[];
   addSchool: () => void;

@@ -1,13 +1,5 @@
 import { create } from "zustand";
 
-interface Form {
-  name: string;
-  lastName: string;
-  email: string;
-  summary: string;
-  city: string;
-  phoneNum: string;
-}
 interface FormStore {
   form: Form;
   setField: (name: string, value: string) => void;

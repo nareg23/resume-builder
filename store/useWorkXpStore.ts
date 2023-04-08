@@ -1,14 +1,5 @@
 import { create } from "zustand";
 
-interface Job {
-  id: number;
-  company: string;
-  title: string;
-  from: string;
-  to: string;
-  description: string;
-}
-
 interface WorkState {
   jobs: Job[];
   addJob: () => void;
@@ -30,7 +21,7 @@ const useWorkXpStore = create<WorkState>((set) => ({
 
   addJob: () =>
     set((state) => ({
-      jobs: [...state.jobs, { ...initialJobState, id: state.jobs.length }],
+      jobs: [...state.jobs, { ...initialJobState, id: state.jobs.length + 1 }],
     })),
 
   removeJob: (index: number) => {
@@ -41,11 +32,11 @@ const useWorkXpStore = create<WorkState>((set) => ({
     });
   },
 
-  setField: (name = "", value: string, index: number) => {
+  setField: (name = "", value: string, id: number) => {
     return set((state) => {
       return {
-        jobs: [...state.jobs].map((job: Job, i: number) => {
-          if (index === i) return { ...job, [name]: value };
+        jobs: [...state.jobs].map((job: Job) => {
+          if (id === job.id) return { ...job, [name]: value };
           return job;
         }),
       };

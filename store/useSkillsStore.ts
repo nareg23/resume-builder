@@ -1,10 +1,5 @@
 import { create } from "zustand";
 
-interface Skill {
-  id: number;
-  name: string;
-  level: "1" | "2" | "3" | "4" | "5";
-}
 interface SkillsState {
   skills: Skill[];
   addSkill: () => void;

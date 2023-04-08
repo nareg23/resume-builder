@@ -52,7 +52,7 @@ const WorkExperience = () => {
                 type="date"
                 name="from"
                 value={job.from}
-                onChange={(e) => handleChange(e, i)}
+                onChange={(e) => handleChange(e, job.id)}
               />
             </div>
 
@@ -66,7 +66,7 @@ const WorkExperience = () => {
                 type="date"
                 name="to"
                 value={job.to}
-                onChange={(e) => handleChange(e, i)}
+                onChange={(e) => handleChange(e, job.id)}
               />
             </div>
           </div>
@@ -85,7 +85,7 @@ const WorkExperience = () => {
                 type="text"
                 name="title"
                 value={job.title}
-                onChange={(e) => handleChange(e, i)}
+                onChange={(e) => handleChange(e, job.id)}
               />
             </div>
             <div className="flex-1 space-y-2">
@@ -100,7 +100,7 @@ const WorkExperience = () => {
                 border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
                 name="company"
                 value={job.company}
-                onChange={(e) => handleChange(e, i)}
+                onChange={(e) => handleChange(e, job.id)}
               />
             </div>
           </div>
