@@ -31,7 +31,15 @@ const StudioHeader = ({ targetRef }: Props) => {
         <div className="w-[30rem]">
           <TemplateAccordion isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
-        <Pdf targetRef={targetRef} filename="resume.pdf">
+        <Pdf
+          targetRef={targetRef}
+          filename="resume.pdf"
+          options={{
+            orientation: "portrait",
+            unit: "in",
+            format: [11, 13.8],
+          }}
+        >
           {({ toPdf }: any) => <DownloadBtn toPdf={toPdf} />}
         </Pdf>
       </div>

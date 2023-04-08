@@ -7,6 +7,7 @@ interface Form {
   summary: string;
   city: string;
   phoneNum: string;
+  title: string;
 }
 
 interface Job {

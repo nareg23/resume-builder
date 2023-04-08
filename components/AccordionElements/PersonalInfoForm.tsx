@@ -52,6 +52,17 @@ const PersonalInfoForm = () => {
           onChange={handleChange}
         />
       </div>
+      <div className="w-full space-y-1 ">
+        <p className="uppercase font-semibold text-xs">title</p>
+        <input
+          value={form.title}
+          className="text-gray-600 flex-1 w-full bg-gray-100 outline-none border
+          border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
+          type="text"
+          name="title"
+          onChange={handleChange}
+        />
+      </div>
 
       <div className="flex flex-col justify-start w-full space-y-1">
         <p className="uppercase font-semibold text-xs">summary</p>

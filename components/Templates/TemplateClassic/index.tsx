@@ -5,11 +5,17 @@ import useTemplateData from "@/hooks/useTemplateData";
 import SkillsList from "./SkillsList";
 import EducationsList from "./EducationsList";
 
-const TemplateClassic = () => {
+type Props = {
+  pdfRef: React.MutableRefObject<null>;
+};
+
+const TemplateClassic = ({ pdfRef }: Props) => {
   const { jobs, personalForm, schools, skills } = useTemplateData();
   return (
-    <div>
-      <h1>this is a template</h1>
+    <div
+      ref={pdfRef}
+      className="w-[1056px] bg-white rounded-md mx-auto select-none"
+    >
       <div>
         <Personal personalForm={personalForm} />
       </div>

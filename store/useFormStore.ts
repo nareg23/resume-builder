@@ -6,12 +6,13 @@ interface FormStore {
 }
 
 const initialForm: Form = {
-  email: "",
-  lastName: "",
-  name: "",
+  email: "naregTokatlian@gmail.com",
+  lastName: "Tokatlian",
+  name: "Nareg",
   summary: "",
   city: "",
-  phoneNum: "",
+  phoneNum: "514 660 2308",
+  title: "",
 };
 
 const useFormStore = create<FormStore>((set) => ({
