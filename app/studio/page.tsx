@@ -14,7 +14,7 @@ const Page = () => {
           <ControlPanel />
         </div>
         <div className="flex justify-center flex-1 pt-4 bg-gray-500 rounded-tl-md scrollbar-none">
-          <div className=" bg-cyan-200overflow-y-auto w-full mx-auto">
+          <div className="overflow-y-auto w-full mx-auto py-4">
             <TemplateClassic pdfRef={targetRef} />
           </div>
         </div>

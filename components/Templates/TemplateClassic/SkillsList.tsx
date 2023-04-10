@@ -10,7 +10,7 @@ const SkillsList = ({ skills }: Props) => {
       <h1 className="uppercase mb-2 text-lg text-gray-600">Skills</h1>
       <div className="space-y-1">
         {skills.map((skill) => (
-          <p className="text-gray-500" key={skill.id}>
+          <p className="text-gray-500 text-sm" key={skill.id}>
             {skill.name}
           </p>
         ))}

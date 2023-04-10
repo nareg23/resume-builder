@@ -75,6 +75,21 @@ const WorkExperience = () => {
             <div className="flex-1 space-y-2">
               <label
                 className="uppercase font-semibold text-xs"
+                htmlFor="company"
+              >
+                company
+              </label>
+              <input
+                className="w-full bg-gray-100 outline-none border
+                border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
+                name="company"
+                value={job.company}
+                onChange={(e) => handleChange(e, job.id)}
+              />
+            </div>
+            <div className="flex-1 space-y-2">
+              <label
+                className="uppercase font-semibold text-xs"
                 htmlFor="title"
               >
                 title
@@ -85,21 +100,6 @@ const WorkExperience = () => {
                 type="text"
                 name="title"
                 value={job.title}
-                onChange={(e) => handleChange(e, job.id)}
-              />
-            </div>
-            <div className="flex-1 space-y-2">
-              <label
-                className="uppercase font-semibold text-xs"
-                htmlFor="company"
-              >
-                company
-              </label>
-              <input
-                className="w-full bg-gray-100 outline-none border
-                border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
-                name="company"
-                value={job.company}
                 onChange={(e) => handleChange(e, job.id)}
               />
             </div>

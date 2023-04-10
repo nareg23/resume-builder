@@ -14,7 +14,7 @@ const TemplateClassic = ({ pdfRef }: Props) => {
   return (
     <div
       ref={pdfRef}
-      className="w-[1056px] p-5  flex flex-col items-center 
+      className="w-[796px] p-5 flex flex-col items-center 
       justify-center bg-white rounded-md mx-auto select-none
       space-y-12"
     >
@@ -43,7 +43,7 @@ const TemplateClassic = ({ pdfRef }: Props) => {
             ></div>
           </div>
 
-          <div>
+          <div className="space-y-12">
             <Jobs jobs={jobs} />
             <EducationsList schools={schools} />
           </div>

@@ -37,7 +37,7 @@ const StudioHeader = ({ targetRef }: Props) => {
           options={{
             orientation: "portrait",
             unit: "in",
-            format: [11, 13.8],
+            format: [8.3, 11.7],
           }}
         >
           {({ toPdf }: any) => <DownloadBtn toPdf={toPdf} />}
