@@ -34,6 +34,32 @@ const Education = () => {
             </button>
           </div>
 
+          <div className="flex gap-3">
+            <div className="flex flex-col flex-1">
+              <label className="uppercase font-semibold text-xs" htmlFor="from">
+                from
+              </label>
+              <input
+                className=" w-full bg-gray-100 outline-none  border
+              border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
+                type="date"
+                name="from"
+                onChange={(e) => handleChange(e, school.id)}
+              />
+            </div>
+            <div className="flex flex-col flex-1">
+              <label className="uppercase font-semibold text-xs" htmlFor="to">
+                to
+              </label>
+              <input
+                className=" w-full bg-gray-100 outline-none  border
+               border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
+                type="date"
+                name="to"
+                onChange={(e) => handleChange(e, school.id)}
+              />
+            </div>
+          </div>
           <div className="flex flex-col items-start ">
             <label className="uppercase font-semibold text-xs" htmlFor="school">
               School
@@ -61,33 +87,6 @@ const Education = () => {
               name="description"
               onChange={(e) => handleChange(e, school.id)}
             />
-          </div>
-
-          <div className="flex gap-3">
-            <div className="flex flex-col flex-1">
-              <label className="uppercase font-semibold text-xs" htmlFor="from">
-                from
-              </label>
-              <input
-                className=" w-full bg-gray-100 outline-none  border
-              border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
-                type="date"
-                name="from"
-                onChange={(e) => handleChange(e, school.id)}
-              />
-            </div>
-            <div className="flex flex-col flex-1">
-              <label className="uppercase font-semibold text-xs" htmlFor="to">
-                to
-              </label>
-              <input
-                className=" w-full bg-gray-100 outline-none  border
-               border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
-                type="date"
-                name="to"
-                onChange={(e) => handleChange(e, school.id)}
-              />
-            </div>
           </div>
         </div>
       ))}
