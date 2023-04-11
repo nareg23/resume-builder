@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { RiArrowUpSLine } from "react-icons/ri";
+import useTemplateStore, { TemplateComponents } from "@/store/useTemplateStore";
 
 const mockData = ["Fantastic", "Awesome", "technical"];
 
@@ -10,6 +11,7 @@ type Props = {
 };
 
 const TemplateAccordion = ({ isOpen, setIsOpen }: Props) => {
+  const setTemplate = useTemplateStore((state) => state.setComponent);
   const expandedBorderClasses =
     "rounded-tl-md rounded-tr-md border border-slate-100 border-b-0";
 
@@ -63,7 +65,7 @@ const TemplateAccordion = ({ isOpen, setIsOpen }: Props) => {
           >
             {isOpen && (
               <div className="w-full ">
-                {mockData.map((mock, i) => (
+                {Object.keys(TemplateComponents).map((key, i) => (
                   <div
                     key={i}
                     className="flex flex-col justify-center items-start "
@@ -71,8 +73,9 @@ const TemplateAccordion = ({ isOpen, setIsOpen }: Props) => {
                     <button
                       className="px-4 py-3 w-full text-left text-gray-700 font-medium overflow-hidden
                      hover:bg-gray-700 hover:text-white transition-colors  duration-200 ease-out"
+                      onClick={() => setTemplate(key as any)}
                     >
-                      {mock}
+                      {key}
                     </button>
                     {mockData.length - 1 !== i && (
                       <hr className="h-1 bg-gray-300 border-b-2 w-10/12"></hr>
