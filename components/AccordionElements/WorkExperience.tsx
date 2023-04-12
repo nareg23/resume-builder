@@ -24,9 +24,9 @@ const WorkExperience = () => {
   };
 
   return (
-    <div className="text-gray-700/70 flex w-full flex-col items-end">
+    <div className="text-gray-700/70 flex w-full flex-col items-end ">
       {jobs.map((job, i) => (
-        <div className="relative pb-10 space-y-6" key={job.id}>
+        <div className="relative pb-10 space-y-6 w-full" key={job.id}>
           <div
             className="flex justify-between bg-indigo-400/20 px-2 py-2 rounded-md
           "
@@ -41,7 +41,7 @@ const WorkExperience = () => {
             </button>
           </div>
 
-          <div className="flex  items-center justify-between space-x-2">
+          <div className="flex flex-col 2xl:flex-row items-center justify-between space-y-3 2xl:space-y-0 2xl:space-x-2">
             <div className="flex flex-col w-full flex-1 space-y-2">
               <label className="uppercase font-semibold text-xs" htmlFor="from">
                 from
@@ -61,7 +61,7 @@ const WorkExperience = () => {
                 to
               </label>
               <input
-                className="w-full bg-gray-100 outline-none  border
+                className="w-full bg-gray-100 outline-none border
                         border-gray-300/50 font-medium rounded-sm px-2 py-2 text-md"
                 type="date"
                 name="to"
@@ -71,7 +71,7 @@ const WorkExperience = () => {
             </div>
           </div>
 
-          <div className="flex space-x-2">
+          <div className="flex flex-col 2xl:flex-row space-y-2 2xl:space-y-0 space-x-0 2xl:space-x-2">
             <div className="flex-1 space-y-2">
               <label
                 className="uppercase font-semibold text-xs"

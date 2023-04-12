@@ -34,8 +34,8 @@ const Education = () => {
             </button>
           </div>
 
-          <div className="flex gap-3">
-            <div className="flex flex-col flex-1">
+          <div className="flex flex-col 2xl:flex-row gap-3">
+            <div className="flex flex-col space-y-1 flex-1">
               <label className="uppercase font-semibold text-xs" htmlFor="from">
                 from
               </label>
@@ -47,7 +47,7 @@ const Education = () => {
                 onChange={(e) => handleChange(e, school.id)}
               />
             </div>
-            <div className="flex flex-col flex-1">
+            <div className="flex flex-col flex-1 space-y-1">
               <label className="uppercase font-semibold text-xs" htmlFor="to">
                 to
               </label>
@@ -60,7 +60,7 @@ const Education = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col items-start ">
+          <div className="flex flex-col items-start space-y-1">
             <label className="uppercase font-semibold text-xs" htmlFor="school">
               School
             </label>
@@ -73,7 +73,7 @@ const Education = () => {
               onChange={(e) => handleChange(e, school.id)}
             />
           </div>
-          <div>
+          <div className="space-y-1">
             <label
               className="uppercase font-semibold text-xs"
               htmlFor="description"

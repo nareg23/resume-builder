@@ -31,7 +31,7 @@ const Skills = () => {
               <p className="uppercase font-semibold text-xs">skill</p>
               <input
                 className="text-gray-600 flex-1 w-full bg-gray-100 outline-none
-                 border-gray-500 font-medium rounded-sm px-2 py-2 text-md"
+                 border-gray-500 font-medium rounded-sm px-2 py-2 text-sm 2xl:text-base"
                 type="text"
                 name="name"
                 value={skill.name}
@@ -40,10 +40,12 @@ const Skills = () => {
             </div>
 
             <div className="flex items-center justify-around flex-1">
-              <p className="uppercase font-semibold text-xs">Level</p>
+              <p className="uppercase hidden 2xl:inline-flex font-semibold text-xs">
+                Level
+              </p>
               <select
                 onChange={(e) => handleChange(e, skill.id)}
-                className="w-2/4 outline-none"
+                className="w-full 2xl:w-1/2 outline-none"
                 name="level"
               >
                 <option selected value="5">
@@ -59,7 +61,7 @@ const Skills = () => {
               className=" text-red-300 hover:text-red-600"
               onClick={() => removeSkill(skill.id)}
             >
-              <IoMdCloseCircle className="h-6 w-6 text-red-300 hover:text-red-600" />
+              <IoMdCloseCircle className="w-5 h-5 2xl:h-6 2xl:w-6 text-red-300 hover:text-red-600" />
             </button>
           </div>
         ))}
