@@ -1,11 +1,7 @@
 import React from "react";
 
-type Props = {
-  targetRef: React.MutableRefObject<null>;
-};
-
-const AwesimeTemplate = ({ targetRef }: Props) => {
-  return <div ref={targetRef}>AwesimeTemplate</div>;
+const AwesimeTemplate = () => {
+  return <div>AwesimeTemplate</div>;
 };
 
 export default AwesimeTemplate;

@@ -17,8 +17,9 @@ const Page = () => {
         </div>
         <div className="flex justify-center flex-1 pt-4 bg-gray-200 rounded-tl-md scrollbar-none">
           <div className="overflow-y-auto w-full mx-auto py-4">
-            {/* @ts-ignore */}
-            <CurrentComponent targetRef={targetRef} />
+            <div className="w-[796px] mx-auto" ref={targetRef}>
+              <CurrentComponent />
+            </div>
           </div>
         </div>
       </div>

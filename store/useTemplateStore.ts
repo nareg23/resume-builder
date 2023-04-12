@@ -13,7 +13,7 @@ type TemplateChoices = keyof typeof TemplateType;
 
 interface TemplateStore {
   currentComponentName: string;
-  currentComponent: (ref: React.LegacyRef<HTMLDivElement>) => any;
+  currentComponent: () => any;
   setComponent: (type: TemplateChoices) => void;
 }
 
