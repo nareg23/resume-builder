@@ -1,44 +1,49 @@
-import React from "react";
-import { motion } from "framer-motion";
+"use client";
+
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { RiArrowUpSLine } from "react-icons/ri";
 import useTemplateStore, { TemplateComponents } from "@/store/useTemplateStore";
 
-const mockData = ["Fantastic", "Awesome", "technical"];
-
-type Props = {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+const covertTolowerCase = (title: string) => {
+  const titleArray = title.toLowerCase().split("");
+  titleArray[0] = titleArray[0].toUpperCase();
+  return titleArray.join("");
 };
 
-const TemplateAccordion = ({ isOpen, setIsOpen }: Props) => {
-  const setTemplate = useTemplateStore((state) => state.setComponent);
-  const expandedBorderClasses =
-    "rounded-tl-md rounded-tr-md border border-slate-100 border-b-0";
+const TemplateAccordion = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [setTemplate, currentComponentName] = useTemplateStore((state) => [
+    state.setComponent,
+    state.currentComponentName,
+  ]);
+
+  const handleClick = (keyName: any) => {
+    setTemplate(keyName as any);
+    setIsOpen(false);
+  };
 
   return (
-    <div className="relative w-full">
-      <motion.div
-        className={` flex justify-between px-4 py-3 items-center
-        cursor-pointer select-none border-slate-100  ${
-          isOpen ? expandedBorderClasses : "rounded-md border"
+    <div className="relative w-full ">
+      <div
+        className={` flex justify-between px-4 py-3 items-center rounded-md text-white
+        cursor-pointer select-none bg-indigo-400 opacity-70 hover:opacity-100 ${
+          isOpen && "rounded-bl-none rounded-br-none"
         }`}
-        initial={false}
-        animate={{
-          backgroundColor: isOpen ? "rgb(229 231 235)" : "rgb(243 244 246 )",
-        }}
-        whileHover={{ backgroundColor: "rgb(229 231 235)" }}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h2 className="text-gray-700 text-lg font-medium">Classic Resume</h2>
+        <h2 className=" text-lg font-medium">
+          {covertTolowerCase(currentComponentName)}
+        </h2>
         {
           <motion.div
             animate={{ rotateZ: isOpen ? 0 : 180 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
-            <RiArrowUpSLine className="text-gray-700 h-5 w-5" />
+            <RiArrowUpSLine className="h-5 w-5" />
           </motion.div>
         }
-      </motion.div>
+      </div>
 
       {isOpen && (
         <motion.section
@@ -59,32 +64,34 @@ const TemplateAccordion = ({ isOpen, setIsOpen }: Props) => {
           transition={{ duration: 0.3, ease: [0.12, 0.45, 0.63, 1] }}
         >
           {/* accordion contents */}
-          <div
-            className="w-full absolute bg-gray-200 select-none border 
-           border-slate-100 border-t-0 rounded-bl-md rounded-br-md "
-          >
-            {isOpen && (
-              <div className="w-full ">
-                {Object.keys(TemplateComponents).map((key, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col justify-center items-start "
-                  >
-                    <button
-                      className="px-4 py-3 w-full text-left text-gray-700 font-medium overflow-hidden
+          <AnimatePresence>
+            <motion.div
+              key={"modal"}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="w-full absolute bg-indigo-200/50 select-none  
+           border-slate-100 rounded-bl-md rounded-br-md"
+            >
+              {isOpen && (
+                <div className="flex flex-col items-center">
+                  {Object.keys(TemplateComponents).map(
+                    (keyName) =>
+                      currentComponentName != keyName && (
+                        <button
+                          key={keyName}
+                          className="px-4 py-3 w-full text-left text-gray-700 font-medium overflow-hidden
                      hover:bg-gray-700 hover:text-white transition-colors  duration-200 ease-out"
-                      onClick={() => setTemplate(key as any)}
-                    >
-                      {key}
-                    </button>
-                    {mockData.length - 1 !== i && (
-                      <hr className="h-1 bg-gray-300 border-b-2 w-10/12"></hr>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+                          onClick={() => handleClick(keyName)}
+                        >
+                          {covertTolowerCase(keyName)}
+                        </button>
+                      )
+                  )}
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
           {/* end accordion contents */}
         </motion.section>
       )}

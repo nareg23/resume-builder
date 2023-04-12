@@ -3,6 +3,7 @@ import React from "react";
 import TemplateClassic from "@/components/Templates/TemplateClassic";
 import TemplateAwesome from "@/components/Templates/TemplateAwesome";
 
+// add new Templates here and line 20.
 enum TemplateType {
   CLASSIC = "CLASSIC",
   AWESOME = "AWESOME",
@@ -11,6 +12,7 @@ enum TemplateType {
 type TemplateChoices = keyof typeof TemplateType;
 
 interface TemplateStore {
+  currentComponentName: string;
   currentComponent: (ref: React.LegacyRef<HTMLDivElement>) => any;
   setComponent: (type: TemplateChoices) => void;
 }
@@ -23,8 +25,12 @@ export const TemplateComponents = {
 
 const useTemplateStore = create<TemplateStore>((set) => ({
   currentComponent: TemplateComponents[TemplateType.CLASSIC],
+  currentComponentName: TemplateType.CLASSIC,
   setComponent: (type: TemplateChoices) =>
-    set(() => ({ currentComponent: TemplateComponents[type] })),
+    set(() => ({
+      currentComponent: TemplateComponents[type],
+      currentComponentName: type,
+    })),
 }));
 
 export default useTemplateStore;

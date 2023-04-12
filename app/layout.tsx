@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
 
 export const metadata = {
   title: "Create Next App",
