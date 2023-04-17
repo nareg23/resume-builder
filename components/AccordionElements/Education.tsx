@@ -27,7 +27,7 @@ const Education = () => {
           key={school.id}
           className="flex flex-col text-gray-700/70 space-y-3"
         >
-          <div className="flex justify-between bg-indigo-400/20 px-2 py-2 rounded-md">
+          <div className="flex justify-between bg-creamy/30  px-2 py-2 rounded-md">
             <p className="font-bold text-gray-500"> # {i + 1}</p>
             <button onClick={() => removeSchool(school.id)}>
               <IoMdCloseCircle className="h-6 w-6 text-red-300 hover:text-red-600" />

@@ -28,7 +28,7 @@ const WorkExperience = () => {
       {jobs.map((job, i) => (
         <div className="relative pb-10 space-y-6 w-full" key={job.id}>
           <div
-            className="flex justify-between bg-indigo-400/20 px-2 py-2 rounded-md
+            className="flex justify-between bg-creamy/30 px-2 py-2 rounded-md
           "
           >
             <p className="font-bold text-gray-500"> # {i + 1}</p>

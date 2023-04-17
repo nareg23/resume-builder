@@ -13,7 +13,8 @@ type Props = {
 const DownloadBtn = ({ toPdf }: any) => (
   <button
     onClick={toPdf}
-    className="text-white py-2 px-3 bg-emerald-600 rounded-md "
+    className="text-white py-2 px-4
+   bg-dark rounded-md hover:bg-dark/30 active:scale-[.9] transition-transform duration-150 "
   >
     Download
   </button>
@@ -25,7 +26,7 @@ const StudioHeader = ({ targetRef }: Props) => {
       <div className="flex px-10 py-4 items-center justify-between">
         <div className="flex space-x-3 items-center">
           <Link href={"/"}>
-            <AiFillHome className="h-8 w-8 text-gray-700" />
+            <AiFillHome className="h-8 w-8 text-dark" />
           </Link>
         </div>
         <div className="w-[30rem]">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiArrowUpSLine } from "react-icons/ri";
 import useTemplateStore, { TemplateComponents } from "@/store/useTemplateStore";
@@ -23,20 +23,35 @@ const TemplateAccordion = () => {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const closeOnclickEvent = (e: MouseEvent) => {
+      // @ts-expect-error
+      if (!e.target!.className.includes("template__dropdown")) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("click", closeOnclickEvent);
+
+    return () => {
+      document.removeEventListener("click", closeOnclickEvent);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full ">
+    <div className="relative w-full">
       <div
-        className={` flex justify-between px-4 py-3 items-center rounded-md text-white
-        cursor-pointer select-none bg-indigo-400 opacity-70 hover:opacity-100 ${
+        className={`template__dropdown flex justify-between px-4 py-3 items-center rounded-md text-dark
+        cursor-pointer select-none bg-primary  transition-colors duration-200 ${
           isOpen && "rounded-bl-none rounded-br-none"
         }`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h2 className=" text-lg font-medium">
+        <h2 className=" template__dropdown text-lg font-medium">
           {covertTolowerCase(currentComponentName)}
         </h2>
         {
           <motion.div
+            className="template__dropdown"
             animate={{ rotateZ: isOpen ? 0 : 180 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
@@ -47,7 +62,7 @@ const TemplateAccordion = () => {
 
       {isOpen && (
         <motion.section
-          className="text-white relative w-full z-20"
+          className="template__dropdown text-white relative w-full z-20"
           key="content"
           initial="collapsed"
           animate="open"
@@ -70,18 +85,19 @@ const TemplateAccordion = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="w-full absolute bg-indigo-200/50 select-none  
-           border-slate-100 rounded-bl-md rounded-br-md"
+              className="template__dropdown w-full absolute bg-gray-700 select-none  
+           border-slate-100 rounded-bl-md rounded-br-md text-white"
             >
               {isOpen && (
-                <div className="flex flex-col items-center">
+                <div className="template__dropdown flex flex-col items-center">
                   {Object.keys(TemplateComponents).map(
                     (keyName) =>
                       currentComponentName != keyName && (
                         <button
                           key={keyName}
-                          className="px-4 py-3 w-full text-left text-gray-700 font-medium overflow-hidden
-                     hover:bg-gray-700 hover:text-white transition-colors  duration-200 ease-out"
+                          className="template__dropdown px-4 py-3 w-full text-left
+                          font-medium 
+                        hover:bg-dark hover:text-white transition-colors  duration-200 ease-out"
                           onClick={() => handleClick(keyName)}
                         >
                           {covertTolowerCase(keyName)}
