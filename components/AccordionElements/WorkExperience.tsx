@@ -1,8 +1,7 @@
 "use client";
-
 import useWorkXpStore from "@/store/useWorkXpStore";
 import React from "react";
-import Editor from "../WorkEditor";
+import dynamic from "next/dynamic";
 import { IoMdCloseCircle } from "react-icons/io";
 import { RiAddLine } from "react-icons/ri";
 
@@ -10,6 +9,10 @@ type HandleChange = (
   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   index: number
 ) => void;
+
+const DynamicEditor = dynamic(() => import("../WorkEditor"), {
+  ssr: false,
+});
 
 const WorkExperience = () => {
   const { jobs, addJob, removeJob, setField } = useWorkXpStore(
@@ -109,7 +112,7 @@ const WorkExperience = () => {
             <label className="uppercase font-semibold text-xs" htmlFor="title">
               description
             </label>
-            <Editor jobId={job.id} />
+            <DynamicEditor jobId={job.id} />
           </div>
         </div>
       ))}

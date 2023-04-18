@@ -1,7 +1,13 @@
+"use client";
+
 import useFormStore from "@/store/useFormStore";
 import React from "react";
-import PersonalEditor from "../PersonalEditor";
+// import PersonalEditor from "../PersonalEditor";
+import dynamic from "next/dynamic";
 
+const DynamicEditor = dynamic(() => import("../PersonalEditor"), {
+  ssr: false,
+});
 const PersonalInfoForm = () => {
   const { setField, form } = useFormStore((state) => state);
 
@@ -66,7 +72,7 @@ const PersonalInfoForm = () => {
 
       <div className="flex flex-col justify-start w-full space-y-1">
         <p className="uppercase font-semibold text-xs">summary</p>
-        <PersonalEditor />
+        <DynamicEditor />
       </div>
 
       <div className="flex flex-col 2xl:flex-row space-y-3 2xl:space-y-0 items-center w-full 2xl:space-x-2">

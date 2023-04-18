@@ -24,16 +24,17 @@ const TemplateAccordion = () => {
   };
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     const closeOnclickEvent = (e: MouseEvent) => {
       // @ts-expect-error
-      if (!e.target!.className.includes("template__dropdown")) {
+      if (!e?.target?.className?.includes("template__dropdown")) {
         setIsOpen(false);
       }
     };
-    document.addEventListener("click", closeOnclickEvent);
+    document?.addEventListener("click", closeOnclickEvent);
 
     return () => {
-      document.removeEventListener("click", closeOnclickEvent);
+      document?.removeEventListener("click", closeOnclickEvent);
     };
   }, []);
 

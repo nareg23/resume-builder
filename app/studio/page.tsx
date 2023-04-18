@@ -1,5 +1,6 @@
 "use client";
-import React, { useRef, useState } from "react";
+
+import { useRef } from "react";
 import ControlPanel from "@/components/ControlPanel";
 import StudioHeader from "@/components/StudioHeader";
 import useTemplateStore from "@/store/useTemplateStore";
